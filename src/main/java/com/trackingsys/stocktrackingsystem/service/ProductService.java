@@ -32,4 +32,10 @@ public class ProductService {
         return productRepository.findById(productId)
                 .orElse(null);
     }
+
+    public Product deleteProductById(Long productId) {
+        Product product = productRepository.findById(productId).orElse(null);
+        productRepository.deleteById(productId);
+        return product;
+    }
 }

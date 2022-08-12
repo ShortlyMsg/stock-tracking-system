@@ -36,4 +36,10 @@ public class ProductController {
         log.info("Inside getProductById method of UserController");
         return ResponseEntity.ok(productService.getProductById(productId));
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteProductById(@PathVariable("id") Long productId){
+        log.info("Inside deleteProductById method of UserController");
+        productService.deleteProductById(productId);
+    }
 }
