@@ -34,6 +34,7 @@ public class ProductService {
     }
 
     public Product deleteProductById(Long productId) {
+        log.info("Inside deleteProductById method of ProductService");
         Product product = productRepository.findById(productId).orElse(null);
         productRepository.deleteById(productId);
         return product;
