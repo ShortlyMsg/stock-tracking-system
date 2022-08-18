@@ -39,4 +39,15 @@ public class ProductService {
         productRepository.deleteById(productId);
         return product;
     }
+
+    public Product updateProductById(Product product, Long productId) {
+        log.info("Inside updateProductById method of ProductService");
+        Product updateProduct = productRepository.findById(productId).orElse(null);
+        updateProduct.setProductName(product.getProductName());
+        updateProduct.setUnitStock(product.getUnitStock());
+        updateProduct.setUnitPrice(product.getUnitPrice());
+        updateProduct.setInventory(product.getInventory());
+
+        return productRepository.save(updateProduct);
+    }
 }

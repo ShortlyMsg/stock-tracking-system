@@ -42,4 +42,11 @@ public class ProductController {
         log.info("Inside deleteProductById method of ProductController");
         productService.deleteProductById(productId);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> updateProductById(@RequestBody Product product,
+                                                     @PathVariable("id") Long productId){
+        log.info("Inside updateProductById method of ProductController");
+        return ResponseEntity.ok(productService.updateProductById(product, productId));
+    }
 }

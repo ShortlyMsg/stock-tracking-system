@@ -24,20 +24,28 @@ public class CategoryService {
     }
 
     public List<Category> getAllCategories() {
-        log.info("Inside addCategory method of CategoryService");
+        log.info("Inside getAllCategories method of CategoryService");
         return categoryRepository.findAll();
     }
 
     public Category getProductById(int categoryId) {
-        log.info("Inside addCategory method of CategoryService");
+        log.info("Inside getProductById method of CategoryService");
         return categoryRepository.findById(categoryId)
                 .orElse(null);
     }
 
     public Category deleteCategoryById(int categoryId) {
-        log.info("Inside addCategory method of CategoryService");
+        log.info("Inside deleteCategoryById method of CategoryService");
         Category category= categoryRepository.findById(categoryId).orElse(null);
         categoryRepository.deleteById(categoryId);
         return category;
+    }
+
+    public Category updateCategoryById(Category category, int categoryId) {
+        log.info("Inside updateCategoryById method of CategoryService");
+        Category updateCategory = categoryRepository.findById(categoryId).orElse(null);
+        updateCategory.setCategoryName(category.getCategoryName());
+
+        return categoryRepository.save(updateCategory);
     }
 }

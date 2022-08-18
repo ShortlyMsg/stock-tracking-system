@@ -43,4 +43,11 @@ public class CategoryController {
         log.info("Inside deleteCategoryById method of CategoryController");
         categoryService.deleteCategoryById(categoryId);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Category> updateCategoryById(@RequestBody Category category,
+                                                       @PathVariable("id") int categoryId){
+        log.info("Inside updateCategorybyId method of CategoryController");
+        return ResponseEntity.ok(categoryService.updateCategoryById(category, categoryId));
+    }
 }
