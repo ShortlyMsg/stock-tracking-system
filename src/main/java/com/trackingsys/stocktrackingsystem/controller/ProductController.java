@@ -1,5 +1,6 @@
 package com.trackingsys.stocktrackingsystem.controller;
 
+import com.trackingsys.stocktrackingsystem.dto.ProductDto;
 import com.trackingsys.stocktrackingsystem.entity.Product;
 import com.trackingsys.stocktrackingsystem.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,19 +21,19 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> addProduct(@RequestBody Product product){
+    public ResponseEntity<ProductDto> addProduct(@RequestBody Product product){
         log.info("Inside addProduct method of ProductController");
         return ResponseEntity.ok(productService.addProduct(product));
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProducts(){
+    public ResponseEntity<List<ProductDto>> getAllProducts(){
         log.info("Inside getAllProducts method of ProductController");
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable("id") Long productId){
+    public ResponseEntity<ProductDto> getProductById(@PathVariable("id") Long productId){
         log.info("Inside getProductById method of ProductController");
         return ResponseEntity.ok(productService.getProductById(productId));
     }
@@ -44,7 +45,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProductById(@RequestBody Product product,
+    public ResponseEntity<ProductDto> updateProductById(@RequestBody Product product,
                                                      @PathVariable("id") Long productId){
         log.info("Inside updateProductById method of ProductController");
         return ResponseEntity.ok(productService.updateProductById(product, productId));

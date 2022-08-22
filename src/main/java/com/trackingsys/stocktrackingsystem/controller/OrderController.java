@@ -1,7 +1,6 @@
 package com.trackingsys.stocktrackingsystem.controller;
 
 import com.trackingsys.stocktrackingsystem.entity.Order;
-import com.trackingsys.stocktrackingsystem.entity.Product;
 import com.trackingsys.stocktrackingsystem.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
