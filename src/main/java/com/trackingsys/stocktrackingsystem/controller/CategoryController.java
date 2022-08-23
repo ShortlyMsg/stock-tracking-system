@@ -1,5 +1,6 @@
 package com.trackingsys.stocktrackingsystem.controller;
 
+import com.trackingsys.stocktrackingsystem.dto.CategoryDto;
 import com.trackingsys.stocktrackingsystem.entity.Category;
 import com.trackingsys.stocktrackingsystem.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,19 +21,19 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<Category> addCategory(@RequestBody Category category){
+    public ResponseEntity<CategoryDto> addCategory(@RequestBody Category category){
         log.info("Inside addCategory method of CategoryController");
         return ResponseEntity.ok(categoryService.addCategory(category));
     }
 
     @GetMapping
-    public ResponseEntity<List<Category>> getAllCategories(){
+    public ResponseEntity<List<CategoryDto>> getAllCategories(){
         log.info("Inside getAllCategories method of CategoryController");
         return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> getCategoryById(@PathVariable("id") int categoryId){
+    public ResponseEntity<CategoryDto> getCategoryById(@PathVariable("id") int categoryId){
         log.info("Inside getCategoryById method of CategoryController");
         return ResponseEntity.ok(categoryService.getProductById(categoryId));
     }
@@ -44,7 +45,7 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Category> updateCategoryById(@RequestBody Category category,
+    public ResponseEntity<CategoryDto> updateCategoryById(@RequestBody Category category,
                                                        @PathVariable("id") int categoryId){
         log.info("Inside updateCategorybyId method of CategoryController");
         return ResponseEntity.ok(categoryService.updateCategoryById(category, categoryId));

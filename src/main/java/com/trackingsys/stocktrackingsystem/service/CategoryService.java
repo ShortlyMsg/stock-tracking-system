@@ -1,7 +1,8 @@
 package com.trackingsys.stocktrackingsystem.service;
 
+import com.trackingsys.stocktrackingsystem.dto.CategoryDto;
+import com.trackingsys.stocktrackingsystem.dto.converter.CategoryDtoConverter;
 import com.trackingsys.stocktrackingsystem.entity.Category;
-import com.trackingsys.stocktrackingsystem.entity.Product;
 import com.trackingsys.stocktrackingsystem.repository.CategoryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,25 +14,27 @@ import java.util.List;
 public class CategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final CategoryDtoConverter categoryDtoConverter;
 
-    public CategoryService(CategoryRepository categoryRepository) {
+    public CategoryService(CategoryRepository categoryRepository, CategoryDtoConverter categoryDtoConverter) {
         this.categoryRepository = categoryRepository;
+        this.categoryDtoConverter = categoryDtoConverter;
     }
 
-    public Category addCategory(Category category) {
+    public CategoryDto addCategory(Category category) {
         log.info("Inside addCategory method of CategoryService");
-        return categoryRepository.save(category);
+        return categoryDtoConverter.convertToDto(categoryRepository.save(category));
     }
 
-    public List<Category> getAllCategories() {
+    public List<CategoryDto> getAllCategories() {
         log.info("Inside getAllCategories method of CategoryService");
-        return categoryRepository.findAll();
+        return categoryDtoConverter.convertToDto(categoryRepository.findAll());
     }
 
-    public Category getProductById(int categoryId) {
+    public CategoryDto getProductById(int categoryId) {
         log.info("Inside getProductById method of CategoryService");
-        return categoryRepository.findById(categoryId)
-                .orElse(null);
+        return categoryDtoConverter.convertToDto(categoryRepository.findById(categoryId)
+                .orElse(null));
     }
 
     public Category deleteCategoryById(int categoryId) {
@@ -41,11 +44,11 @@ public class CategoryService {
         return category;
     }
 
-    public Category updateCategoryById(Category category, int categoryId) {
+    public CategoryDto updateCategoryById(Category category, int categoryId) {
         log.info("Inside updateCategoryById method of CategoryService");
         Category updateCategory = categoryRepository.findById(categoryId).orElse(null);
         updateCategory.setCategoryName(category.getCategoryName());
 
-        return categoryRepository.save(updateCategory);
+        return categoryDtoConverter.convertToDto(categoryRepository.save(updateCategory));
     }
 }

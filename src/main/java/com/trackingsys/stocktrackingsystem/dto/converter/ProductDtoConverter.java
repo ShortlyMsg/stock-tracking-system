@@ -20,8 +20,8 @@ public class ProductDtoConverter {
                 .build();
     }
 
-    public List<ProductDto> convertToDto(List<Product> product){
-        return product.stream()
+    public List<ProductDto> convertToDto(List<Product> products){
+        return products.stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }

@@ -1,7 +1,8 @@
 package com.trackingsys.stocktrackingsystem.service;
 
+import com.trackingsys.stocktrackingsystem.dto.OrderDto;
+import com.trackingsys.stocktrackingsystem.dto.converter.OrderDtoConverter;
 import com.trackingsys.stocktrackingsystem.entity.Order;
-import com.trackingsys.stocktrackingsystem.entity.Product;
 import com.trackingsys.stocktrackingsystem.repository.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,24 +15,26 @@ import java.util.List;
 public class OrderService {
 
     private final OrderRepository orderRepository;
+    private final OrderDtoConverter orderDtoConverter;
 
-    public OrderService(OrderRepository orderRepository) {
+    public OrderService(OrderRepository orderRepository, OrderDtoConverter orderDtoConverter) {
         this.orderRepository = orderRepository;
+        this.orderDtoConverter = orderDtoConverter;
     }
 
-    public Order addOrder(Order order) {
+    public OrderDto addOrder(Order order) {
         log.info("Inside addOrder method of OrderService");
-        return orderRepository.save(order);
+        return orderDtoConverter.convertToDto(orderRepository.save(order));
     }
 
-    public List<Order> getAllOrders() {
+    public List<OrderDto> getAllOrders() {
         log.info("Inside getAllOrders method of OrderService");
-        return orderRepository.findAll();
+        return orderDtoConverter.convertToDto(orderRepository.findAll());
     }
 
-    public Order getOrderById(String orderId) {
+    public OrderDto getOrderById(String orderId) {
         log.info("Inside getOrderById method of OrderService");
-        return orderRepository.findById(orderId).orElse(null);
+        return orderDtoConverter.convertToDto(orderRepository.findById(orderId).orElse(null));
     }
 
     public Order deleteOrderById(String orderId) {
@@ -41,12 +44,12 @@ public class OrderService {
         return order;
     }
 
-    public Order updateOrderById(Order order, String orderId) {
+    public OrderDto updateOrderById(Order order, String orderId) {
         log.info("Inside updateOrderById method of OrderService");
         Order updateOrder = orderRepository.findById(orderId).orElse(null);
         updateOrder.setOrderNumber(order.getOrderNumber());
         updateOrder.setOrderDate(LocalDateTime.now());
 
-        return orderRepository.save(updateOrder);
+        return orderDtoConverter.convertToDto(orderRepository.save(updateOrder));
     }
 }
