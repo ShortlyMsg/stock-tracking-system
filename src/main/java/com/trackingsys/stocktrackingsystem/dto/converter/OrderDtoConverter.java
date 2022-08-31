@@ -5,6 +5,7 @@ import com.trackingsys.stocktrackingsystem.entity.Order;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,7 +15,7 @@ public class OrderDtoConverter {
     public OrderDto convertToDto(Order order){
         return OrderDto.builder()
                 .orderNumber(order.getOrderNumber())
-                .orderDate(LocalDateTime.now())
+                .orderDate(LocalDateTime.now(ZoneId.of("Africa/Addis_Ababa")))
                 .build();
     }
 

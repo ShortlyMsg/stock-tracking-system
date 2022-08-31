@@ -11,26 +11,29 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name="orders")
-public class Order {
-
+@Table(name="users")
+public class User {
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name="order_id")
-    private String orderId;
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "user_id")
+    private String userId;
 
     @NotNull
-    @Column(name="order_number")
-    private String orderNumber;
+    @Column(name = "mail")
+    private String mail;
 
     @NotNull
-    @Column(name="order_date")
-    private LocalDateTime orderDate = LocalDateTime.now(ZoneId.of("Africa/Addis_Ababa"));
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "creation_date")
+    private LocalDateTime creationDate= LocalDateTime.now(ZoneId.of("Africa/Addis_Ababa"));
 
 }
