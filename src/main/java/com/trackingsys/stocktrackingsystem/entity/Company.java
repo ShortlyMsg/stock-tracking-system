@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,15 +23,19 @@ public class Company extends User{
     @Column(name = "company_id")
     private String companyId;
 
+    @NotNull
     @Column(name = "company_name")
     private String companyName;
 
+    @NotNull
     @Column(name = "web_address")
     private String webAddress;
 
+    @NotNull
     @Column(name = "tax_number")
     private String taxNumber;
 
+    @NotNull
     @Column(name = "company_phone_number")
     private String companyPhoneNumber;
 }
