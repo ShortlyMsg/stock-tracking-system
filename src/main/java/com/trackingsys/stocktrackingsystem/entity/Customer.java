@@ -18,9 +18,8 @@ import java.util.Date;
 @Table(name="customer")
 public class Customer extends User{
 
-    @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "customer_id")
     private String customerId;
 

@@ -19,9 +19,10 @@ import java.time.ZoneId;
 @Entity
 @Table(name="users")
 public class User {
+
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "user_id")
     private String userId;
 

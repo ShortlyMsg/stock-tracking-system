@@ -17,9 +17,8 @@ import javax.validation.constraints.NotNull;
 @Table(name="company")
 public class Company extends User{
 
-    @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "company_id")
     private String companyId;
 
