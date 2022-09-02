@@ -2,7 +2,6 @@ package com.trackingsys.stocktrackingsystem.service;
 
 import com.trackingsys.stocktrackingsystem.dto.UserDto;
 import com.trackingsys.stocktrackingsystem.dto.converter.UserDtoConverter;
-import com.trackingsys.stocktrackingsystem.entity.Product;
 import com.trackingsys.stocktrackingsystem.entity.User;
 import com.trackingsys.stocktrackingsystem.repository.UserRepository;
 import org.springframework.stereotype.Service;
