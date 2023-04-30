@@ -1,12 +1,8 @@
 package com.trackingsys.stocktrackingsystem.entity;
 
-
-import com.sun.istack.NotNull;
+import jakarta.persistence.*;
+import org.jetbrains.annotations.NotNull;
 import lombok.*;
-
-import javax.persistence.*;
-
-
 
 @AllArgsConstructor
 @NoArgsConstructor
