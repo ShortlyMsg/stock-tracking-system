@@ -10,11 +10,10 @@ import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
 
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @Getter
 @Setter
 @Entity
-@Table(name="company")
 public class Company extends User{
 
     @GeneratedValue(generator = "UUID")

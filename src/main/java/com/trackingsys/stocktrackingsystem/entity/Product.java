@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import lombok.*;
 
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @Getter
 @Setter
 @Entity
