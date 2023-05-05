@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Date;
 
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @Getter
 @Setter
 @Entity
